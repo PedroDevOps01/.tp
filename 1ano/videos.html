@@ -1062,144 +1062,126 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const themeToggle = document.getElementById("theme-toggle");
-        const hamburger = document.getElementById("hamburger");
-        const navMenu = document.getElementById("nav-menu");
-        const header = document.getElementById("header");
-        const floatingHearts = document.getElementById("floating-hearts");
-        const videoModal = document.getElementById("video-modal");
-        const closeModal = document.getElementById("close-modal");
-        const videoPlayer = document.getElementById("video-player");
-        const videoCards = document.querySelectorAll(".video-card");
+  const themeToggle = document.getElementById("theme-toggle");
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+  const header = document.getElementById("header");
+  const floatingHearts = document.getElementById("floating-hearts");
+  const videoModal = document.getElementById("video-modal");
+  const closeModal = document.getElementById("close-modal");
+  const videoPlayer = document.getElementById("video-player");
+  const playButtons = document.querySelectorAll(".play-button");
 
-        // Configuração do tema
-        themeToggle.addEventListener("click", function () {
-          document.body.classList.toggle("dark-mode");
-          if (document.body.classList.contains("dark-mode")) {
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-          } else {
-            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-          }
+  // Configuração do tema
+  themeToggle.addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+    themeToggle.innerHTML = document.body.classList.contains("dark-mode")
+      ? '<i class="fas fa-sun"></i>'
+      : '<i class="fas fa-moon"></i>';
+  });
+
+  // Menu hamburger para mobile
+  hamburger.addEventListener("click", function () {
+    navMenu.classList.toggle("active");
+  });
+
+  // Efeito de scroll no header
+  window.addEventListener("scroll", function () {
+    header.classList.toggle("scrolled", window.scrollY > 100);
+  });
+
+  // Criar corações flutuantes
+  function createHearts() {
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = '<i class="fas fa-heart"></i>';
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      heart.style.fontSize = Math.random() * 15 + 10 + "px";
+      floatingHearts.appendChild(heart);
+    }
+  }
+  createHearts();
+
+  // Abrir modal de vídeo ao clicar no play button
+  playButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation(); // Evita que o clique no botão propague para o card
+      const videoCard = this.closest(".video-card");
+      const videoSrc = videoCard.getAttribute("data-video-src");
+
+      if (videoSrc) {
+        videoPlayer.innerHTML = `
+          <video controls autoplay style="width: 100%; max-height: 80vh; border-radius: 10px;">
+            <source src="${videoSrc}" type="video/mp4">
+            Seu navegador não suporta vídeos em MP4.
+          </video>
+        `;
+        videoModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+    });
+  });
+
+  // Fechar modal
+  closeModal.addEventListener("click", function () {
+    videoModal.style.display = "none";
+    videoPlayer.innerHTML = "";
+    document.body.style.overflow = "auto";
+  });
+
+  // Fechar modal ao clicar fora
+  videoModal.addEventListener("click", function (e) {
+    if (e.target === videoModal) {
+      videoModal.style.display = "none";
+      videoPlayer.innerHTML = "";
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  // Navegação suave para âncoras
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href");
+      if (targetId === "#") return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: "smooth",
         });
-
-        // Menu hamburger para mobile
-        hamburger.addEventListener("click", function () {
-          navMenu.classList.toggle("active");
-        });
-
-        // Efeito de scroll no header
-        window.addEventListener("scroll", function () {
-          if (window.scrollY > 100) {
-            header.classList.add("scrolled");
-          } else {
-            header.classList.remove("scrolled");
-          }
-        });
-
-        // Criar corações flutuantes
-        function createHearts() {
-          for (let i = 0; i < 20; i++) {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = '<i class="fas fa-heart"></i>';
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 5 + 5 + "s";
-            heart.style.animationDelay = Math.random() * 5 + "s";
-            heart.style.fontSize = Math.random() * 15 + 10 + "px";
-            floatingHearts.appendChild(heart);
-          }
+        if (navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
         }
+      }
+    });
+  });
 
-        createHearts();
+  // Animação de entrada dos cards
+  function animateOnScroll() {
+    document.querySelectorAll(".video-card").forEach((element) => {
+      const position = element.getBoundingClientRect();
+      if (position.top < window.innerHeight - 100) {
+        element.style.opacity = 1;
+        element.style.transform = "translateY(0)";
+      }
+    });
+  }
 
-        // Abrir modal de vídeo
-        videoCards.forEach((card) => {
-          card.addEventListener("click", function () {
-            const videoSrc = this.getAttribute("data-video-src");
-            const videoId = this.getAttribute("data-video-id");
-            const videoTitle = this.querySelector(".video-title").textContent;
+  // Inicializar animações
+  document.querySelectorAll(".video-card").forEach((element) => {
+    element.style.opacity = 0;
+    element.style.transform = "translateY(50px)";
+    element.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+  });
 
-            if (videoSrc) {
-              videoPlayer.innerHTML = `
-        <video controls autoplay style="width:100%; border-radius:10px;">
-          <source src="${videoSrc}" type="video/mp4">
-          Seu navegador não suporta vídeos em MP4.
-        </video>
-      `;
-            } else if (videoId) {
-              videoPlayer.innerHTML = `
-        <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1"
-                title="${videoTitle}" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-        </iframe>
-      `;
-            }
-
-            videoModal.style.display = "flex";
-            document.body.style.overflow = "hidden";
-          });
-        });
-
-        // Fechar modal
-        closeModal.addEventListener("click", function () {
-          videoModal.style.display = "none";
-          videoPlayer.innerHTML = "";
-          document.body.style.overflow = "auto";
-        });
-
-        // Fechar modal ao clicar fora
-        window.addEventListener("click", function (e) {
-          if (e.target === videoModal) {
-            videoModal.style.display = "none";
-            videoPlayer.innerHTML = "";
-            document.body.style.overflow = "auto";
-          }
-        });
-
-        // Navegação suave para âncoras
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute("href");
-            if (targetId === "#") return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: "smooth",
-              });
-
-              if (navMenu.classList.contains("active")) {
-                navMenu.classList.remove("active");
-              }
-            }
-          });
-        });
-
-        // Animação de entrada dos cards
-        const animateOnScroll = function () {
-          const elements = document.querySelectorAll(".video-card");
-          elements.forEach((element) => {
-            const position = element.getBoundingClientRect();
-            if (position.top < window.innerHeight - 100) {
-              element.style.opacity = 1;
-              element.style.transform = "translateY(0)";
-            }
-          });
-        };
-
-        // Inicializar animações
-        document.querySelectorAll(".video-card").forEach((element) => {
-          element.style.opacity = 0;
-          element.style.transform = "translateY(50px)";
-          element.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-        });
-
-        window.addEventListener("scroll", animateOnScroll);
-        animateOnScroll();
-      });
+  window.addEventListener("scroll", animateOnScroll);
+  animateOnScroll();
+});
     </script>
   </body>
 </html>
