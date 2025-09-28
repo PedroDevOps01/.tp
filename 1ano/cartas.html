@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas Especiais - Gabriel & Thais</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #f8bbd0;
+            --background-color: #fff;
+            --text-color: #333;
+            --accent-color: #f06292;
+            --card-bg: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --heart-color: #e91e63;
+        }
+        .dark-mode {
+            --primary-color: #f48fb1;
+            --secondary-color: #4a4a4a;
+            --background-color: #1a1a1a;
+            --text-color: #f5f5f5;
+            --accent-color: #f06292;
+            --card-bg: #2c2c2c;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --heart-color: #f48fb1;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section {
+            padding: 80px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--shadow-color);
+            background-color: var(--accent-color);
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            font-size: 2.5rem;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            background-color: var(--background-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+        header.scrolled {
+            padding: 15px 0;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-right: 25px;
+            color: var(--primary-color);
+        }
+        .logo-icon {
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .theme-toggle:hover {
+            color: var(--primary-color);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1100;
+            background: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url("../img/fundo3.jpeg");
+            background-size: cover;
+            background-position: center top 10px;
+            background-repeat: no-repeat;
+        }
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+        }
+        .hero h2 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .hero-date {
+            font-size: 1.8rem;
+            margin-top: 30px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--heart-color);
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .letters {
+            background-color: rgba(248, 187, 208, 0.1);
+        }
+        .letters-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .letter-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .letter-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow-color);
+        }
+        .letter-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .letter-content {
+            padding: 20px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .letter-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .letter-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .letter-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .letter-signature {
+            text-align: right;
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        footer {
+            background-color: var(--card-bg);
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 -5px 15px var(--shadow-color);
+        }
+        .footer-quote {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-family: 'Dancing Script', cursive;
+        }
+        .social-icons {
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent-color);
+        }
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .music-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--accent-color);
+        }
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 3rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 1.5rem;
+            }
+            .nav-menu {
+                display: none;
+                width: 100%;
+            }
+            .nav-menu.active {
+                display: block;
+            }
+            .letters-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .hero-date {
+                font-size: 1.5rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .modal-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon"></span>
+                <h1>Gabriel & Thais</h1>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="inicio.html">Inicio</a></li>
+                    <li><a href="dias.html">365 Dias</a></li>
+                    <li><a href="album.html">Álbum de Fotos</a></li>
+                    <li><a href="videos.html">Nossos vídeos</a></li>
+                    <li><a href="fuja.html">Surpresa</a></li>
+                    <li>
+                        <button class="theme-toggle" id="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2 class="cursive">Cartas do Coração</h2>
+            <p style="color: white; text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;">
+                Mensagens especiais para momentos especiais do nosso amor
+            </p>
+            <div class="hero-date cursive">Para a minha futura esposa</div>
+        </div>
+        <div class="floating-hearts" id="floating-hearts"></div>
+    </section>
+
+    <!-- Letters Section -->
+    <section class="letters" id="letters">
+        <div class="container">
+            <h2 class="section-title">Cartas para Momentos Especiais</h2>
+            <div class="letters-container">
+                <div class="letter-card" data-letter="triste">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-sad-tear"></i></div>
+                        <h3>Quando estiver triste</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="feliz">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-laugh-beam"></i></div>
+                        <h3>Quando estiver feliz</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="saudade">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-heart"></i></div>
+                        <h3>Quando sentir saudade</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="distantes">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-road"></i></div>
+                        <h3>Quando estivermos distantes</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="noticia">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-surprise"></i></div>
+                        <h3>Quando tiver uma notícia</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="curiosa">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-question-circle"></i></div>
+                        <h3>Quando estiver curiosa</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="estressada">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-tired"></i></div>
+                        <h3>Quando estiver estressada</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="apaixonada">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-heartbeat"></i></div>
+                        <h3>Quando estiver apaixonada</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="preocupada">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h3>Quando estiver preocupada</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="revelacao">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-gift"></i></div>
+                        <h3>Hoje</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+                <div class="letter-card" data-letter="casamento">
+                    <div class="letter-header">
+                        <div class="letter-icon"><i class="fas fa-ring"></i></div>
+                        <h3>Para depois do nosso casamento</h3>
+                    </div>
+                    <div class="letter-content">
+                        <p>Clique para abrir esta carta especial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Letter Modal -->
+    <div class="modal" id="letter-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">&times;</button>
+            <div id="letter-content">
+                <!-- Conteúdo da carta será inserido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-quote">"O amor é composto de uma única alma habitando dois corpos"</div>
+            <div class="copyright">© 2025 Gabriel & Thais - Uma Vida de Amor. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <iframe 
+            width="0" 
+            height="0" 
+            src="https://www.youtube.com/embed/bBUb-dW0nkA?autoplay=1&loop=1&playlist=bBUb-dW0nkA" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos DOM
+            const themeToggle = document.getElementById('theme-toggle');
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const header = document.getElementById('header');
+            const floatingHearts = document.getElementById('floating-hearts');
+            const letterCards = document.querySelectorAll('.letter-card');
+            const letterModal = document.getElementById('letter-modal');
+            const closeModal = document.getElementById('close-modal');
+            const letterContent = document.getElementById('letter-content');
+            
+            // Variáveis de estado
+            let isPlaying = false;
+            
+            // Conteúdo das cartas
+            const letters = {
+                triste: {
+                    title: "Para quando estiver triste",
+                    content: `
+                        <h2 class="letter-title">Minha querida Thais</h2>
+                        <div class="letter-body">
+                            <p>Sei que nem todos os dias são fáceis, e às vezes a tristeza bate à nossa porta sem avisar. Quero que saiba que estou aqui para você, não importa o quão escuro o dia possa parecer.</p>
+                            <p>Lembre-se de que as nuvens mais escuras sempre passam, e o sol volta a brilhar. Você é mais forte do que imagina e mais amada do que pode conceber.</p>
+                            <p>Se precisar chorar, meu ombro está aqui. Se precisar silêncio, ficarei em silêncio com você. Se precisar conversar, ouvirei cada palavra.</p>
+                            <p>Nossos momentos felizes são infinitamente maiores que qualquer momento de tristeza. Esta fase vai passar, e estarei ao seu lado até que isso aconteça.</p>
+                            <p>Te amo mais do que todas as estrelas no céu, e meu amor por você é constante, mesmo nos dias nublados.</p>
+                        </div>
+                        <div class="letter-signature">Com todo meu amor,<br>Gabriel</div>
+                    `
+                },
+                feliz: {
+                    title: "Para quando estiver feliz",
+                    content: `
+                        <h2 class="letter-title">Minha amada Thais</h2>
+                        <div class="letter-body">
+                            <p>Que alegria saber que você está feliz! Sua felicidade é contagiante e ilumina até os cantos mais escuros do meu coração.</p>
+                            <p>Ver você feliz é um dos meus maiores prazeres na vida. Seu sorriso é como o sol da manhã depois de uma noite chuvosa - traz calor, luz e a promessa de um dia maravilhoso.</p>
+                            <p>Guarde este momento de felicidade no seu coração, para que possa revisitá-lo quando precisar. E saiba que estarei sempre aqui para celebrar cada momento feliz com você.</p>
+                            <p>Que esta felicidade seja apenas o começo de muitas outras que estão por vir. Você merece toda a alegria do mundo!</p>
+                        </div>
+                        <div class="letter-signature">Celebrando com você,<br>Gabriel</div>
+                    `
+                },
+                saudade: {
+                    title: "Para quando sentir saudade",
+                    content: `
+                        <h2 class="letter-title">Minha doce Thais</h2>
+                        <div class="letter-body">
+                            <p>A saudade é a prova de que nosso amor é real e profundo. É o preço que pagamos por termos encontrado algo tão especial.</p>
+                            <p>Quando a saudade apertar, lembre-se que eu também estou sentindo sua falta. Estamos conectados não pela distância física, mas pelo coração.</p>
+                            <p>Feche os olhos e sinta meu abraço. Lembre-se do som da minha voz dizendo que te amo. Guarde em seu coração a certeza de que logo estaremos juntos novamente.</p>
+                            <p>Enquanto isso, saiba que você está comigo em cada pensamento, em cada respiração. Nosso amor transcende a distância e o tempo.</p>
+                        </div>
+                        <div class="letter-signature">Com saudades eternas,<br>Gabriel</div>
+                    `
+                },
+                distantes: {
+                    title: "Quando estivermos distantes",
+                    content: `
+                        <h2 class="letter-title">Minha querida Thais</h2>
+                        <div class="letter-body">
+                            <p>Embora a distância física possa nos separar, nada pode diminuir a conexão que temos. Nosso amor é maior do que qualquer quilômetro que possa estar entre nós.</p>
+                            <p>Lembre-se de que estou sempre com você em espírito. Cada estrela no céu é um lembrete do meu amor, cada brisa suave é um carinho meu.</p>
+                            <p>Use este tempo para se dedicar às coisas que você ama, e logo estaremos juntos novamente, com histórias para contar e momentos para compartilhar.</p>
+                            <p>A distância não é permanente, mas nosso amor é. Esta separação é apenas um capítulo temporário em nossa história eterna.</p>
+                        </div>
+                        <div class="letter-signature">Sempre seu,<br>Gabriel</div>
+                    `
+                },
+                noticia: {
+                    title: "Quando tiver uma notícia",
+                    content: `
+                        <h2 class="letter-title">Minha amada Thais</h2>
+                        <div class="letter-body">
+                            <p>Seja qual for a notícia que você tenha para compartilhar, saiba que estou aqui para apoiá-la incondicionalmente.</p>
+                            <p>Se for uma boa notícia, mal posso esperar para celebrar com você! Suas conquistas são minhas conquistas, sua alegria é minha alegria.</p>
+                            <p>Se for uma notícia difícil, saiba que não está sozinha. Juntos, podemos enfrentar qualquer desafio. Sua força é minha força, e sua dor é minha dor.</p>
+                            <p>Lembre-se: não importa o que a vida traga, estamos nisso juntos. Nosso amor é o porto seguro onde podemos encontrar refúgio em qualquer tempestade.</p>
+                        </div>
+                        <div class="letter-signature">Sempre ao seu lado,<br>Gabriel</div>
+                    `
+                },
+                curiosa: {
+                    title: "Para quando estiver curiosa",
+                    content: `
+                        <h2 class="letter-title">Minha querida Thais</h2>
+                        <div class="letter-body">
+                            <p>Adoro sua curiosidade e sua mente inquisitiva! É uma das muitas coisas que amo em você.</p>
+                            <p>Se está curiosa sobre algo relacionado a nós, ao nosso futuro, ou a qualquer outra coisa, saiba que adorarei explorar essas questões com você.</p>
+                            <p>Nossa jornada juntos é uma descoberta constante, e cada dia traz novas perguntas e novas respostas. Esta curiosidade é o que mantém nosso relacionamento vibrante e emocionante.</p>
+                            <p>Nunca pare de questionar, de explorar, de querer saber mais. Prometo sempre ser honesto e aberto com você, não importa qual seja a pergunta.</p>
+                        </div>
+                        <div class="letter-signature">Seu eterno admirador,<br>Gabriel</div>
+                    `
+                },
+                estressada: {
+                    title: "Para quando estiver estressada",
+                    content: `
+                        <h2 class="letter-title">Minha doce Thais</h2>
+                        <div class="letter-body">
+                            <p>Respire fundo. Feche os olhos por um momento. Sinta meu amor envolvendo você como um cobertor aconchegante.</p>
+                            <p>O estresse é temporário, mas nosso amor é constante. Estas preocupações que parecem tão grandes agora em breve serão apenas lembranças distantes.</p>
+                            <p>Lembre-se de que você não precisa carregar tudo sozinha. Estou aqui para dividir o fardo, para ajudar a encontrar soluções, ou apenas para ouvir.</p>
+                            <p>Você é incrivelmente capaz e forte, mas mesmo os mais fortes precisam de um descanso. Permita-se uma pausa. Cuide de você. Eu cuido de você.</p>
+                        </div>
+                        <div class="letter-signature">Com todo cuidado,<br>Gabriel</div>
+                    `
+                },
+                apaixonada: {
+                    title: "Para quando estiver apaixonada",
+                    content: `
+                        <h2 class="letter-title">Minha amada Thais</h2>
+                        <div class="letter-body">
+                            <p>Que maravilha saber que você está sentindo toda a intensidade do amor! Este sentimento que nos conecta é a coisa mais bela que experimentei.</p>
+                            <p>Quando você está apaixonada, todo o mundo parece mais brilhante, não é? É assim que me sinto todos os dias ao seu lado.</p>
+                            <p>Aproveite cada momento deste sentimento maravilhoso. Deixe-se levar pela emoção, pela alegria, pela intensidade deste amor que compartilhamos.</p>
+                            <p>Saiba que meu amor por você só cresce a cada dia. Estou tão apaixonado por você hoje quanto no primeiro dia, se não mais.</p>
+                        </div>
+                        <div class="letter-signature">Apaixonadamente seu,<br>Gabriel</div>
+                    `
+                },
+                preocupada: {
+                    title: "Para quando estiver preocupada",
+                    content: `
+                        <h2 class="letter-title">Minha querida Thais</h2>
+                        <div class="letter-body">
+                            <p>Entendo que às vezes a preocupação pode parecer esmagadora, mas quero que saiba que não precisa enfrentar isso sozinha.</p>
+                            <p>Compartilhe suas preocupações comigo. Juntos, podemos encontrar soluções, ou pelo menos dividir o peso desses pensamentos.</p>
+                            <p>Lembre-se de que muitas das coisas que nos preocupam nunca realmente acontecem. E mesmo quando acontecem, somos mais fortes do que imaginamos.</p>
+                            <p>Confie em nosso amor e em nossa parceria. Não importa o desafio, vamos superá-lo juntos, como sempre fizemos.</p>
+                        </div>
+                        <div class="letter-signature">Sempre ao seu lado,<br>Gabriel</div>
+                    `
+                },
+                revelacao: {
+                    title: "Hoje",
+                    content: `
+                        <h2 class="letter-title">Minha amada Thais</h2>
+                        <div class="letter-body">
+                            <p>Hoje é um dia que ficará guardado para sempre no meu coração. Ao revelar esta carta para você, estou abrindo uma janela para os meus sentimentos mais profundos, uma forma de eternizar o que sinto por você. Cada linha de código, cada coração flutuante, cada palavra aqui foi pensada com você em mente, minha razão de viver.</p>
+                            <p>Amor, desde o dia em que te conheci, minha vida ganhou um novo sentido. Lembro-me do seu sorriso tímido na primeira vez que nos encontramos, da forma como seus olhos brilhavam quando falava sobre as coisas, e de como meu coração soube, naquele instante, que você era a pessoa que eu queria ao meu lado para sempre.</p>
+                            <p>Isto é mais do que um presente, é uma promessa. Uma promessa de que estarei com você em cada momento, seja de alegria, saudade ou desafio. É um lembrete de que nosso amor é único, forte e capaz de superar qualquer obstáculo. Cada carta aqui foi escrita com lágrimas de emoção e sorrisos de felicidade, imaginando o dia em que você as leria.</p>
+                            <p>Quero que você sinta o quanto é amada, hoje e sempre. Você é a melodia que embala meus dias, a luz que guia meus passos, a paz em meio a tempestade, e a parceira com quem quero construir todos os meus sonhos. Que este dia seja apenas o começo de uma vida cheia de amor, aventuras e momentos inesquecíveis juntos.</p>
+                            <p>Te amo com todo o meu ser, e estou ansioso por cada capítulo da nossa história que ainda escreveremos juntos.</p>
+                        </div>
+                        <div class="letter-signature">Com amor eterno,<br>Gabriel</div>
+                    `
+                },
+               casamento: {
+    title: "Para depois do nosso casamento",
+    content: `
+        <h2 class="letter-title">Minha esposa, minha Thais</h2>
+        <div class="letter-body">
+            <p>Escrever para você como meu marido é a maior alegria que já senti. Agora, com um anel no seu dedo e nosso amor selado perante o mundo e diante de Deus, meu coração transborda de gratidão por compartilhar a vida com você. Este momento, Amor, é a realização de um sonho que começou no instante em que te vi pela primeira vez.</p>
+            <p>Lembro-me de cada etapa da nossa jornada: os primeiros encontros cheios de nervosismo e felicidade ao mesmo tempo, as noites conversando até o sol nascer, as risadas que ecoavam sem motivo aparente, e até as lágrimas que dividimos nos momentos difíceis. Cada um desses instantes nos trouxe até aqui, ao dia em que prometemos ser um do outro para sempre, sob a bênção do Senhor.</p>
+            <p>Agora, como seu marido, quero que você saiba que meu amor por você só cresce. Casar com você não foi apenas um momento, mas o início de uma vida inteira de parceria, cumplicidade e amor incondicional. Oro para que Deus seja sempre o centro do nosso lar, guiando nossas decisões e fortalecendo nosso amor. Prometo estar ao seu lado em cada risada, em cada sonho, em cada desafio, confiando que o Senhor nos sustentará em todas as coisas.</p>
+            <p>Quero construir uma família com você, viajar pelo mundo, envelhecer ao seu lado, e continuar descobrindo novas formas de te amar a cada dia. Que nosso casamento seja reflexo do amor de Cristo: paciente, bondoso e eterno.</p>
+            <p>Você é meu lar, Amor. Não importa onde estejamos, seu amor é o lugar onde me sinto completo, e a presença de Deus é o alicerce que nos mantém firmes. Que esta carta seja um lembrete do nosso compromisso, da nossa história, e do futuro brilhante que nos espera sob a graça divina. Obrigado por escolher me amar, por dizer "sim", por ser minha eternamente.</p>
+            <p>Te amo hoje, amanhã e para sempre, minha esposa.</p>
+        </div>
+        <div class="letter-signature">Seu para sempre,<br>Gabriel</div>
+    `
+}
+            };
+            
+            // Modo Claro/Escuro
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            });
+            
+            // Menu Hamburguer
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Criar corações flutuantes
+            function createHearts() {
+                for (let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '<i class="fas fa-heart"></i>';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                    heart.style.animationDelay = Math.random() * 5 + 's';
+                    heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                    floatingHearts.appendChild(heart);
+                }
+            }
+            
+            createHearts();
+            
+            // Abrir carta
+            letterCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const letterType = this.dataset.letter;
+                    showLetter(letterType);
+                });
+            });
+            
+            function showLetter(type) {
+                if (letters[type]) {
+                    letterContent.innerHTML = letters[type].content;
+                    letterModal.style.display = 'flex';
+                    
+                    // Adicionar efeito de coração
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '<i class="fas fa-heart"></i>';
+                    heart.style.position = 'fixed';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.fontSize = '30px';
+                    heart.style.zIndex = '1000';
+                    heart.style.animation = 'float 4s ease-in-out forwards';
+                    document.body.appendChild(heart);
+                    
+                    // Remover após animação
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }
+            }
+            
+            // Fechar modal
+            closeModal.addEventListener('click', function() {
+                letterModal.style.display = 'none';
+            });
+            
+            // Clique fora do modal para fechar
+            window.addEventListener('click', function(e) {
+                if (e.target === letterModal) {
+                    letterModal.style.display = 'none';
+                }
+            });
+            
+            // Smooth scrolling para links internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Fechar menu mobile se aberto
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

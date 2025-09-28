@@ -1,0 +1,1166 @@
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>365 Dias de Amor - Pedro & Thais</title>
+        <link
+        rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>"
+        />
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet"
+        />
+        <style>
+        /* Variáveis CSS para modo claro/escuro */
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #f8bbd0;
+            --background-color: #fff;
+            --text-color: #333;
+            --accent-color: #f06292;
+            --card-bg: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --heart-color: #e91e63;
+        }
+
+        .dark-mode {
+            --primary-color: #f48fb1;
+            --secondary-color: #4a4a4a;
+            --background-color: #1a1a1a;
+            --text-color: #f5f5f5;
+            --accent-color: #f06292;
+            --card-bg: #2c2c2c;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --heart-color: #f48fb1;
+        }
+
+        /* Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+        }
+
+        .cursive {
+            font-family: "Dancing Script", cursive;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--shadow-color);
+            background-color: var(--accent-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            font-size: 2.5rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            background-color: var(--background-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+        margin-right: 25px;
+        color: var(--primary-color);
+      }
+
+      .logo-icon {
+        color: var(--primary-color);
+        font-size: 24px;
+      }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        background-image: url("../img/fundo3.jpeg");
+        background-size: cover;
+        background-position: center top 10px;
+        background-repeat: no-repeat;
+      }
+            .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        background-image: url("../img/fundo3.jpeg");
+        background-size: cover;
+        background-position: center top 10px;
+        background-repeat: no-repeat;
+      }
+
+      .hero-content {
+        z-index: 1;
+        max-width: 800px;
+      }
+
+      .hero h2 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+      }
+
+      .hero-date {
+        font-size: 1.8rem;
+        margin-top: 30px;
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1100;
+    background: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+        .hero h2 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-date {
+            font-size: 1.8rem;
+            margin-top: 30px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Floating Elements */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--heart-color);
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+            }
+            50% {
+            opacity: 0.7;
+            }
+            100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+            }
+        }
+
+        /* Game Section */
+        .game {
+            background-color: rgba(248, 187, 208, 0.1);
+        }
+
+        .game-container {
+            text-align: center;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .day-card {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        .day-card.opened {
+            background-color: var(--accent-color);
+            transform: scale(0.95);
+        }
+
+        .message-display {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            margin-top: 30px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .message-display .cursive {
+            font-size: 1.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 -5px 15px var(--shadow-color);
+        }
+
+        .footer-quote {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-family: "Dancing Script", cursive;
+        }
+
+        .social-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent-color);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--accent-color);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            text-align: center;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+            font-size: 3rem;
+            }
+
+            .days-grid {
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+            flex-direction: column;
+            text-align: center;
+            }
+
+            nav ul {
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            }
+
+            nav ul li {
+            margin: 0 10px 10px;
+            }
+
+            .hero h2 {
+            font-size: 2.5rem;
+            }
+
+            .hero p {
+            font-size: 1.2rem;
+            }
+
+            .section-title {
+            font-size: 2rem;
+            }
+
+            .hamburger {
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            }
+
+            .nav-menu {
+            display: none;
+            width: 100%;
+            }
+
+            .nav-menu.active {
+            display: block;
+            }
+
+            .days-grid {
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 10px;
+            }
+
+            .day-card {
+            height: 60px;
+            font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+            font-size: 2rem;
+            }
+
+            .hero-date {
+            font-size: 1.5rem;
+            }
+
+            .section-title {
+            font-size: 1.8rem;
+            }
+
+            .days-grid {
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            }
+
+            .day-card {
+            height: 50px;
+            font-size: 0.8rem;
+            }
+        }
+        </style>
+    </head>
+    <body>
+       <!-- Header -->
+  <header id="header">
+      <div class="container header-container">
+        <div class="logo">
+          <span class="logo-icon"></span>
+          <h1>Gabriel & Thais</h1>
+        </div>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav>
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="inicio.html">Inicio</a></li>
+
+            <li><a href="cartas.html">Cartas Especiais</a></li>
+            <li><a href="album.html">Álbum de Fotos</a></li>
+                                    <li><a href="videos.html">Nossos vídeos</a></li>
+
+            <li><a href="fuja.html">Surpresa</a></li>
+
+            <li>
+              <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+        <div class="hero-content">
+            <h2 class="cursive">365 Dias de Amor</h2>
+            <p
+          style="
+            color: white;
+            text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red,
+              1px 1px 0 red;
+          "
+        >Um motivo para sorrir a cada dia do nosso primeiro ano juntos</p>
+            <div class="hero-date cursive">22 de Setembro, 2024</div>
+        </div>
+
+        <div class="floating-hearts" id="floating-hearts"></div>
+        </section>
+
+        <!-- Game Section -->
+        <section class="game" id="game">
+        <div class="container">
+            <h2 class="section-title">365 Mensagens de Amor</h2>
+            <div class="game-container">
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem">
+                Clique em um dos dias abaixo para revelar uma mensagem especial de
+                amor. São 365 razões pelas quais eu te amo, uma para cada dia do
+                nosso primeiro ano juntos.
+            </p>
+
+            <div class="days-grid" id="days-grid">
+                <!-- Dias serão gerados via JavaScript -->
+            </div>
+
+            <div class="message-display" id="message-display">
+                <p>Selecione um dia para revelar uma mensagem especial 💖</p>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+        <div class="container">
+            <div class="footer-quote">
+            "O amor não se conta pelos dias, mas pela intensidade de cada momento"
+            </div>
+
+         
+
+            <div class="copyright">
+            © 2024 Pedro & Thais - 1 Ano de Amor. Todos os direitos reservados.
+            </div>
+        </div>
+        </footer>
+
+        <!-- Music Player -->
+        <div class="music-player">
+        <iframe
+            width="0"
+            height="0"
+            src="https://www.youtube.com/embed/bBUb-dW0nkA?autoplay=1&loop=1&playlist=bBUb-dW0nkA"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+        >
+        </iframe>
+        </div>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+  // Elementos DOM
+  const themeToggle = document.getElementById("theme-toggle");
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+  const header = document.getElementById("header");
+  const floatingHearts = document.getElementById("floating-hearts");
+  const daysGrid = document.getElementById("days-grid");
+  const messageDisplay = document.getElementById("message-display");
+
+  // Dias abertos
+  let openedDays = JSON.parse(localStorage.getItem("openedDays")) || [];
+
+            // Mensagens de amor (exemplos - na prática seriam 365 mensagens)
+            const loveMessages = [
+            "Te amo pelo seu sorriso que ilumina meus dias.",
+            "Amo a forma como você me faz sentir especial.",
+            "Te amo pela sua bondade com todos ao seu redor.",
+            "Amo nossa conexão que transcende palavras.",
+            "Te amo pelas nossas conversas que nunca têm fim.",
+            "Amo a forma como você cuida de mim.",
+            "Te amo pela sua determinação em tudo que faz.",
+            "Amo como você me entende sem eu precisar falar.",
+            "Te amo pelos nossos momentos de silêncio confortável.",
+            "Amo como você transforma o ordinário em extraordinário.",
+            "Te amo pela sua paixão pela vida.",
+            "Amo como você me faz rir mesmo nos dias cinzas.",
+            "Te amo pela sua capacidade de me surpreender.",
+            "Amo a forma como você aceita meus defeitos.",
+            "Te amo por ser meu porto seguro.",
+            "Amo como você acredita em mim mais do que eu mesmo.",
+            "Te amo pelas nossas manhãs juntos.",
+            "Amo a forma como você diz 'eu te amo'.",
+            "Te amo por cada detalhe que compõe quem você é.",
+            "Amo como você torna a vida mais leve.",
+            "Te amo pelos nossos planos futuros.",
+            "Amo a forma como você me olha.",
+            "Te amo pela sua coragem de ser vulnerável.",
+            "Amo como você celebra minhas conquistas.",
+            "Te amo pela sua paciência comigo.",
+            "Amo a forma como você canta sem saber a letra.",
+            "Te amo pelos nossos jantares à luz de velas.",
+            "Amo como você se importa com as pequenas coisas.",
+            "Te amo pela sua inteligência que me inspira.",
+            "Amo a forma como você abraça.",
+            "Amo como você faz meus dias mais leves e alegres.",
+            "Amo como você me dá forças quando estou fraco.",
+            "Te amo pelo carinho que coloca em cada gesto.",
+            "Amo nossa cumplicidade em tudo.",
+            "Te amo porque você é meu melhor amigo.",
+            "Amo a forma como você fala do futuro.",
+            "Te amo pela segurança que sinto com você.",
+            "Amo como você transforma dias comuns em memórias inesquecíveis.",
+            "Te amo pelo seu jeitinho único.",
+            "Amo o som da sua risada.",
+            "Te amo pela forma como olha nos meus olhos.",
+            "Amo como você me apoia em tudo.",
+            "Te amo por ser tão verdadeiro.",
+            "Amo nossas brincadeiras bobas.",
+            "Te amo pelo seu abraço quentinho.",
+            "Amo como você me faz sonhar alto.",
+            "Te amo pela forma como cuida dos detalhes.",
+            "Amo como você me chama pelo apelido carinhoso.",
+            "Te amo pelo respeito que temos um pelo outro.",
+            "Amo nossa sintonia perfeita.",
+            "Te amo porque me completa.",
+            "Amo a forma como você me surpreende com pequenos gestos.",
+            "Te amo por acreditar em nós.",
+            "Amo como você me inspira a ser melhor.",
+            "Te amo porque tudo faz sentido com você.",
+            "Amo como você me protege.",
+            "Te amo pela ternura em cada palavra.",
+            "Amo quando você segura minha mão.",
+            "Te amo pela calma que me transmite.",
+            "Amo como você valoriza nossa história.",
+            "Te amo pelos sonhos que dividimos.",
+            "Amo como você enche meus dias de alegria.",
+            "Te amo por fazer do mundo um lugar mais bonito.",
+            "Amo quando você me olha em silêncio.",
+            "Te amo porque nossa conexão é única.",
+            "Amo como você entende meu coração.",
+            "Te amo por ser meu lugar favorito.",
+            "Amo a leveza que você traz para minha vida.",
+            "Te amo pela sinceridade do seu amor.",
+            "Amo quando você me faz sentir especial sem esforço.",
+            "Te amo por estar presente em cada detalhe.",
+            "Amo como você me olha quando penso que ninguém vê.",
+            "Te amo pelo apoio incondicional.",
+            "Amo como você transforma lágrimas em sorrisos.",
+            "Te amo por ser quem é, sem precisar mudar nada.",
+            "Amo como você me faz sentir único.",
+            "Te amo porque você é meu lar.",
+            "Amo quando planejamos viagens juntos.",
+            "Te amo pela confiança que construímos.",
+            "Amo como você me ensina tanto sobre a vida.",
+            "Te amo pelo seu coração gigante.",
+            "Amo quando você me surpreende com palavras doces.",
+            "Te amo porque nossa história é linda.",
+            "Amo como você me faz esquecer do mundo.",
+            "Te amo porque não existe ninguém como você.",
+            "Amo a força do nosso amor.",
+            "Te amo pelos nossos dias simples.",
+            "Amo como você valoriza cada momento.",
+            "Te amo porque tudo é mais bonito ao seu lado.",
+            "Amo sua autenticidade.",
+            "Te amo por ser minha maior bênção.",
+            "Amo como você me faz sentir amado.",
+            "Te amo porque somos nós dois contra o mundo.",
+            "Amo a paz que você traz.",
+            "Te amo pela cumplicidade silenciosa.",
+            "Amo como você ilumina tudo ao redor.",
+            "Te amo por cada segundo vivido juntos.",
+            "Amo seu carinho infinito.",
+            "Te amo porque você é meu hoje e meu sempre.",
+            "Te amo pelo seu jeito de tornar cada amanhecer especial.",
+            "Amo como você me dá motivos para sorrir todos os dias.",
+            "Te amo pelo seu abraço que me acalma.",
+            "Amo a ternura que você coloca em cada gesto.",
+            "Te amo por fazer cada momento valer a pena.",
+            "Amo sua maneira de transformar problemas em aprendizado.",
+            "Te amo por ser minha inspiração constante.",
+            "Amo como você faz meu coração bater mais forte.",
+            "Te amo pelo brilho nos seus olhos quando sorri.",
+            "Amo como você me ensina a amar melhor.",
+            "Te amo por me aceitar por completo.",
+            "Amo a forma como você faz qualquer lugar parecer lar.",
+            "Te amo por cada surpresa que me prepara.",
+            "Amo como você ilumina meus dias nublados.",
+            "Te amo pelo seu carinho silencioso.",
+            "Amo sua paciência infinita comigo.",
+            "Te amo pelo seu jeito único de me olhar.",
+            "Amo a alegria que você espalha por onde passa.",
+            "Te amo por cada risada compartilhada.",
+            "Amo como você me incentiva sem perceber.",
+            "Te amo pela sua autenticidade.",
+            "Amo a forma como você me faz sentir seguro.",
+            "Te amo pelo cuidado que tem comigo.",
+            "Amo sua presença constante, mesmo à distância.",
+            "Te amo por transformar dias comuns em lembranças especiais.",
+            "Amo como você valoriza cada detalhe nosso.",
+            "Te amo por acreditar no nosso amor.",
+            "Amo sua energia contagiante.",
+            "Te amo pela sua dedicação e amor.",
+            "Amo a forma como você me completa.",
+            "Te amo por tornar tudo mais leve.",
+            "Amo como você me escuta sem julgamentos.",
+            "Te amo pela sua alegria que é contagiante.",
+            "Amo a forma como você me dá forças.",
+            "Te amo por cada momento que passamos juntos.",
+            "Amo como você me faz querer ser melhor.",
+            "Te amo por me fazer sentir amado todos os dias.",
+            "Amo cada sorriso seu que aquece meu coração.",
+            "Te amo por seu jeito único e encantador.",
+            "Amo como você transforma o cotidiano em poesia.",
+            "Te amo pela cumplicidade que temos.",
+            "Amo a magia que você coloca na nossa vida.",
+            "Te amo pelo seu carinho que me envolve.",
+            "Amo como você me entende sem palavras.",
+            "Te amo pelo jeito que me faz rir sem motivo.",
+            "Amo a ternura que você traz para minha vida.",
+            "Te amo por me fazer acreditar no amor verdadeiro.",
+            "Amo como você me inspira a sonhar mais alto.",
+            "Te amo pela leveza do seu abraço.",
+            "Amo cada momento que passo ao seu lado.",
+            "Te amo por me fazer sentir especial e amado.",
+            "Amo a forma como você ilumina meus dias.",
+            "Te amo pelo seu jeito doce e apaixonante.",
+            "Amo como você transforma qualquer dificuldade em aprendizado.",
+            "Te amo por me fazer sentir completo.",
+            "Amo cada gesto seu que demonstra amor.",
+            "Te amo pelo seu coração bondoso e generoso.",
+            "Amo a forma como você me apoia sempre.",
+            "Te amo por ser minha alegria constante.",
+            "Amo como você transforma nossas histórias em memórias inesquecíveis.",
+            "Te amo pelo seu jeito de cuidar de mim e dos outros.",
+            "Amo cada risada, cada olhar, cada abraço.",
+            "Te amo por me fazer sentir o homem mais sortudo do mundo.",
+            "Amo como você me completa de formas que não consigo explicar.",
+            "Te amo pela forma como você ama sem medidas.",
+            "Amo cada momento compartilhado com você.",
+            "Te amo por me ensinar a ser uma pessoa melhor.",
+            "Amo como você transforma a vida em algo mágico.",
+            "Te amo pelo seu amor incondicional.",
+            "Amo cada detalhe que te torna único.",
+            "Te amo por cada sonho que sonhamos juntos.",
+            "Amo a forma como você ilumina o mundo ao meu redor.",
+            "Te amo pelo jeito que você me faz sentir em casa.",
+            "Amo sua presença que me acalma e inspira.",
+            "Te amo por ser meu porto seguro e minha felicidade.",
+            "Te amo por cada pequeno gesto que demonstra seu amor.",
+            "Amo como você me faz sentir especial mesmo sem perceber.",
+            "Te amo pelo seu sorriso que é minha luz.",
+            "Amo como você transforma qualquer momento em algo inesquecível.",
+            "Te amo pelo carinho que você espalha por todos os lados.",
+            "Amo cada olhar seu que fala mais que palavras.",
+            "Te amo por me fazer acreditar no amor todos os dias.",
+            "Amo como você valoriza cada instante nosso.",
+            "Te amo pelo seu jeito que me cativa sem esforço.",
+            "Amo como você me faz sentir amado e único.",
+            "Te amo por estar ao meu lado em todos os momentos.",
+            "Amo sua dedicação, sua paciência e sua ternura.",
+            "Te amo pelo seu jeito doce de transformar minha vida.",
+            "Amo como você me faz sonhar com o futuro.",
+            "Te amo por cada lembrança que construímos juntos.",
+            "Amo a alegria que você traz para minha vida.",
+            "Te amo pelo seu coração que é puro e generoso.",
+            "Amo como você me inspira a cada dia.",
+            "Te amo por ser minha força, meu amor e minha alegria.",
+            "Amo cada detalhe que me faz te amar mais ainda.",
+            "Te amo por tornar a vida mais bonita e leve.",
+            "Amo como você faz qualquer lugar parecer perfeito.",
+            "Te amo pelo carinho que demonstra silenciosamente.",
+            "Amo cada sorriso, cada abraço, cada palavra sua.",
+            "Te amo por ser minha paz e meu lar.",
+    "Amo como você faz meu mundo mais colorido todos os dias.",
+            "Te amo pelo amor que você dá sem esperar nada em troca.",
+            "Amo cada momento ao seu lado que se torna inesquecível.",
+            "Te amo por ser a razão da minha felicidade.",
+            "Amo como você ilumina minha vida com sua presença.",
+            "Te amo pelo jeito único e especial que você tem.",
+            "Amo cada gesto seu que demonstra amor e cuidado.",
+            "Te amo por cada sonho que construímos juntos.",
+            "Amo como você faz tudo valer a pena.",
+            "Te amo pelo jeito único que ilumina meus pensamentos.",
+            "Amo a forma como você transforma minha vida com seu amor.",
+            "Te amo por ser minha inspiração e minha alegria.",
+            "Amo cada detalhe que me faz te amar ainda mais.",
+            "Te amo pelo seu jeito que me faz sorrir sem motivo.",
+            "Amo como você transforma momentos simples em memórias eternas.",
+              "Amo cada detalhe que você coloca no nosso amor.",
+
+            "Amo cada abraço, cada sorriso, cada palavra sua.",
+            "Te amo pelo jeito que me faz sentir amado e seguro.",
+            "Amo como você torna meu mundo mais bonito.",
+            "Te amo por cada instante compartilhado juntos.",
+            "Amo sua presença que ilumina minha vida.",
+            "Te amo pelo carinho que me envolve e acalma.",
+            "Amo cada gesto seu que demonstra amor verdadeiro.",
+            "Te amo por ser minha felicidade e meu porto seguro.",
+            "Amo como você me inspira a ser uma pessoa melhor.",
+            "Te amo pelo amor que você coloca em tudo que faz.",
+            "Amo cada momento que passamos juntos, único e especial.",
+            "Te amo por me fazer sentir completo e amado.",
+            "Amo a forma como você transforma cada dia em algo mágico.",
+            "Te amo pelo jeito que me faz sorrir mesmo nos dias difíceis.",
+            "Amo como você me faz sentir a pessoa mais feliz do mundo.",
+            "Te amo por cada detalhe que torna você único e especial.",
+            "Amo cada momento compartilhado que se torna inesquecível e único.",
+            "Te amo pelo carinho, paciência e dedicação que demonstra.",
+            "Amo como você me faz sentir amado e valorizado.",
+            "Te amo por cada gesto que mostra seu amor incondicional.",
+            "Amo a forma como você ilumina minha vida todos os dias.",
+            "Te amo pelo jeito doce e apaixonante que você tem.",
+            "Amo cada abraço, cada sorriso, cada palavra sua que toca meu coração.",
+            "Te amo pelo seu sorriso que é meu refúgio.",
+            "Amo como você faz a vida ser mais leve e feliz.",
+            "Te amo pelo seu jeito único de me amar e cuidar de mim.",
+            "Amo cada instante com você que se torna inesquecível.",
+            "Te amo por cada palavra, cada gesto e cada olhar seu.",
+            "Amo como você transforma dias comuns em momentos extraordinários.",
+            "Te amo pelo carinho e dedicação que demonstra todos os dias.",
+            "Amo cada momento ao seu lado que faz meu coração bater mais forte.",
+            "Te amo por ser meu amor, meu amigo e minha inspiração.",
+            "Amo como você transforma qualquer dia em algo especial.",
+            "Amo como cada abraço seu me faz sentir em casa.",
+            "Amo cada detalhe seu que me faz te amar mais ainda.",
+            "Te amo por cada instante compartilhado que se torna memória eterna.",
+            "Amo como você ilumina minha vida com seu amor e carinho.",
+            "Te amo pelo jeito que me faz sorrir sem perceber.",
+  "Te amo pela forma como transforma desafios em aventuras.",
+            "Te amo por estar sempre comigo, em todos os momentos.",
+            "Amo a forma como você transforma dias simples em inesquecíveis.",
+            "Te amo pelo seu jeito doce, apaixonante e único.",
+            "Amo cada abraço, sorriso e palavra que me toca profundamente.",
+            "Te amo por ser minha felicidade e minha inspiração.",
+            "Amo como você me faz sentir amado todos os dias.",
+            "Te amo pelo carinho e amor que coloca em tudo que faz.",
+            "Amo cada instante com você que transforma minha vida.",
+            "Te amo por cada detalhe que torna nosso amor único e especial.",
+            "Amo como você ilumina meu mundo com seu jeito de amar.",
+            "Te amo pelo jeito que transforma minha vida em algo mágico.",
+            "Amo cada momento ao seu lado que se torna eterno.",
+            "Te amo por ser meu porto seguro, meu amor e minha alegria.",
+            "Amo como você me faz sentir completo, amado e feliz.",
+            "Te amo pelo carinho, paciência e dedicação que demonstra todos os dias.",
+            "Amo cada sorriso, cada abraço, cada palavra sua que toca meu coração.",
+            "Te amo por estar sempre ao meu lado, nos bons e maus momentos.",
+            "Amo como você faz a vida ser mais leve, feliz e apaixonante.",
+            "Te amo pelo jeito único, doce e apaixonante que você tem.",
+            "Amo cada instante compartilhado que se torna inesquecível.",
+            "Te amo por cada gesto, olhar e palavra que mostra seu amor incondicional.",
+            "Amo como você transforma dias comuns em memórias extraordinárias.",
+            "Te amo pelo carinho, dedicação e amor que demonstra sempre.",
+            "Amo como sua presença transforma qualquer instante em alegria.",
+            "Te amo por ser meu amor, minha inspiração e minha felicidade.",
+            "Amo como você transforma qualquer dia em algo especial e mágico.",
+            "Te amo pelo jeito que me faz sentir amado, seguro e completo.",
+            "Amo cada detalhe seu que me faz te amar ainda mais profundamente.",
+            "Te amo por cada instante compartilhado que se torna inesquecível.",
+            "Amo como você ilumina minha vida com seu amor, carinho e ternura.",
+            "Te amo pelo jeito que transforma cada dia em algo maravilhoso.",
+            "Amo cada gesto seu que demonstra amor verdadeiro e profundo.",
+            "Te amo por estar sempre comigo, em quaisquer circunstâncias.",
+            "Amo como você transforma dias simples em lembranças eternas.",
+            "Te amo pelo seu jeito único, doce e apaixonante que me encanta sempre.",
+            "Amo cada abraço, sorriso e palavra sua que toca meu coração.",
+            "Te amo por ser minha felicidade, minha inspiração e meu amor eterno.",
+            "Amo como você faz cada dia valer a pena ao seu lado.",
+            "Te amo pelo carinho, paciência e amor que coloca em tudo que faz.",
+            "Amo cada momento compartilhado que se torna mágico e incrível.",
+            "Te amo por cada pequeno detalhe que torna nosso amor eterno e abençoado por Deus.",
+            "Te amo por cada instante que compartilhamos mesmo em silêncio.",
+"Amo como você transforma qualquer momento em alegria pura.",
+"Te amo pelo seu abraço que me faz sentir protegido.",
+"Amo cada palavra sua que toca meu coração profundamente.",
+"Te amo pelo seu sorriso que ilumina meus dias mais nublados.",
+"Amo como você me faz acreditar em nós mesmo nos desafios.",
+"Te amo pelo carinho que você demonstra sem esperar nada em troca.",
+"Amo cada gesto seu que me mostra a profundidade do seu amor.",
+"Te amo por cada sonho que realizamos juntos.",
+"Amo como você torna a vida mais leve com sua presença.",
+"Te amo pelo seu jeito doce e acolhedor.",
+"Amo cada risada compartilhada que nos aproxima ainda mais.",
+"Te amo pela forma como me faz acreditar em nós.",
+"Amo cada gesto seu que toca minha alma profundamente.",
+"Te amo pelo seu olhar que me transmite paz.",
+"Amo cada abraço seu que aquece meu coração.",
+"Te amo pela forma como me inspira a ser melhor.",
+"Amo como você me entende mesmo sem palavras.",
+"Te amo pelo carinho silencioso que me faz sorrir.",
+"Amo cada instante que passamos juntos que se torna inesquecível.",
+"Te amo por sua dedicação e amor em tudo que faz.",
+"Amo como você transforma cada dia em algo mágico.",
+"Te amo pelo seu jeito de cuidar de mim e dos nossos sonhos.",
+"Amo cada gesto seu que mostra seu amor verdadeiro.",
+"Te amo por me ensinar a amar sem medidas.",
+"Amo como você ilumina minha vida com seu amor.",
+"Te amo pelo jeito que transforma dias comuns em especiais.",
+"Amo cada momento compartilhado que me faz te amar ainda mais.",
+"Amo como sua presença faz tudo ao redor brilhar com amor e alegria.",
+"Amo como você me inspira a sonhar alto todos os dias.",
+"Te amo pelo seu carinho constante e incondicional.",
+"Amo como você transforma pequenos momentos em lembranças eternas.",
+"Te amo pelo jeito que me faz sentir seguro e amado.",
+"Amo como você torna cada dia mais leve e feliz.",
+"Te amo pelo seu amor que me faz acreditar na vida.",
+"Amo cada abraço, cada palavra e cada gesto seu.",
+"Te amo por me fazer sentir completo e feliz.",
+"Amo como você transforma dificuldades em aprendizado e crescimento.",
+"Te amo pelo carinho que coloca em tudo que faz.",
+"Te amo pelo jeito que me inspira a ser melhor.",
+"Te amo por sua presença constante que me dá forças.",
+"Amo como você faz cada lugar parecer lar.",
+"Te amo pelo jeito único de me amar e cuidar de mim.",
+"Te amo por estar sempre comigo mesmo quando estamos longe.",
+"Te amo por estar sempre presente mesmo à distância.",
+"Amo sua autenticidade que me encanta a cada dia.",
+"Te amo pelo seu jeito doce e apaixonante de ser.",
+"Amo cada momento que compartilhamos que se torna eterno.",
+"Te amo por me fazer sentir amado, seguro e completo.",
+"Amo como você ilumina minha vida todos os dias.",
+"Te amo pelo carinho e amor que demonstra sem reservas.",
+"Amo cada instante com você que me faz sorrir sem motivo.",
+"Te amo pelo seu sorriso que me enche de alegria.",
+"Te amo por cada palavra, olhar e gesto que nos conecta.",
+"Te amo por ser minha paz, meu lar e minha inspiração.",
+"Amo cada gesto seu que mostra a profundidade do seu amor.",
+"Amo como você faz o cotidiano parecer mágico.",
+"Amo como você me faz sentir especial e amado.",
+"Te amo pelo jeito que me faz acreditar no amor verdadeiro.",
+"Amo cada momento que me mostra sua bondade.",
+"Te amo por sua dedicação, paciência e ternura.",
+"Amo como você transforma dias simples em memórias extraordinárias.",
+"Te amo pelo seu carinho que me envolve e acalma.",
+"Amo como você transforma qualquer momento em paz e felicidade.",
+"Te amo por me fazer sentir a pessoa mais sortuda do mundo.",
+"Amo como você me completa de maneiras que não consigo explicar.",
+"Te amo pelo seu jeito de amar sem medidas e sem esperar nada.",
+"Te amo pelo jeito que faz meu coração sorrir mesmo nos dias difíceis.",
+"Amo cada detalhe seu que revela o quanto você é especial para mim.",
+"Te amo pela forma como me inspira a ver o mundo de maneira mais bonita."
+            ];
+    console.log(loveMessages.length);
+
+const uniqueMessages = new Set(loveMessages);
+
+// Verificar se existem duplicadas
+if (uniqueMessages.size === loveMessages.length) {
+    console.log("Não há mensagens repetidas. Total de mensagens únicas:", uniqueMessages.size);
+} else {
+    console.log("Existem mensagens repetidas!");
+    console.log("Total de mensagens:", loveMessages.length);
+    console.log("Mensagens únicas:", uniqueMessages.size);
+
+    // Encontrar as mensagens repetidas
+    const duplicates = loveMessages.filter((item, index) => loveMessages.indexOf(item) !== index);
+    const uniqueDuplicates = [...new Set(duplicates)];
+    console.log("Mensagens repetidas:", uniqueDuplicates);
+}
+
+  // Criar grid de dias
+  function createDaysGrid() {
+    daysGrid.innerHTML = ""; // limpa caso seja chamado novamente
+    for (let i = 1; i <= 365; i++) {
+      const dayElement = document.createElement("div");
+      dayElement.classList.add("day-card");
+      dayElement.textContent = i;
+      dayElement.dataset.day = i;
+
+  
+
+      dayElement.addEventListener("click", function () {
+        openDay(i);
+      });
+
+      daysGrid.appendChild(dayElement);
+    }
+  }
+
+  // Abrir dia
+  function openDay(day) {
+  const dayIndex = day - 1;
+
+  // Mostrar mensagem
+  messageDisplay.innerHTML = `<p class="cursive">${loveMessages[dayIndex]}</p>`;
+
+  // Marcar dia como aberto se ainda não estiver
+  if (!openedDays.includes(day)) {
+    openedDays.push(day);
+    localStorage.setItem("openedDays", JSON.stringify(openedDays));
+    const dayElement = document.querySelector(`.day-card[data-day="${day}"]`);
+    if (dayElement) {
+      dayElement.classList.add("opened"); // marca visualmente sem recriar toda a grid
+    }
+  }
+}
+
+  // Criar corações flutuantes
+  function createHearts() {
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = '<i class="fas fa-heart"></i>';
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      heart.style.fontSize = Math.random() * 15 + 10 + "px";
+      floatingHearts.appendChild(heart);
+    }
+  }
+
+  // Modo claro/escuro
+  themeToggle.addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+    themeToggle.innerHTML = document.body.classList.contains("dark-mode")
+      ? '<i class="fas fa-sun"></i>'
+      : '<i class="fas fa-moon"></i>';
+  });
+
+  // Menu hamburguer
+  hamburger.addEventListener("click", function () {
+    navMenu.classList.toggle("active");
+  });
+
+  // Header scroll
+  window.addEventListener("scroll", function () {
+    header.classList.toggle("scrolled", window.scrollY > 100);
+  });
+
+  // Inicialização
+  createHearts();
+  createDaysGrid();
+});
+
+        </script>
+    </body>
+    </html>

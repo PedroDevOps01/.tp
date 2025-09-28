@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gabriel & Thais - Nossos Vídeos</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #e91e63;
+        --secondary-color: #f8bbd0;
+        --background-color: #fff;
+        --text-color: #333;
+        --accent-color: #f06292;
+        --card-bg: #fff;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --heart-color: #e91e63;
+      }
+
+      .dark-mode {
+        --primary-color: #f48fb1;
+        --secondary-color: #4a4a4a;
+        --background-color: #1a1a1a;
+        --text-color: #f5f5f5;
+        --accent-color: #f06292;
+        --card-bg: #2c2c2c;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --heart-color: #f48fb1;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        transition: background-color 0.5s ease, color 0.5s ease;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+      }
+
+      .cursive {
+        font-family: "Dancing Script", cursive;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 15px var(--shadow-color);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px var(--shadow-color);
+        background-color: var(--accent-color);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+        font-size: 2.5rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--primary-color);
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        z-index: 1000;
+        background-color: var(--background-color);
+        box-shadow: 0 2px 10px var(--shadow-color);
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        padding: 15px 0;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+        margin-right: 25px;
+        color: var(--primary-color);
+      }
+
+      .logo-icon {
+        color: var(--primary-color);
+        font-size: 24px;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      .theme-toggle {
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        color: var(--primary-color);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 22px;
+        cursor: pointer;
+        z-index: 1100;
+        background: none;
+        border: none;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: var(--primary-color);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+       .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        background-image: url("../img/fundo3.jpeg");
+        background-size: cover;
+        background-position: center top 10px;
+        background-repeat: no-repeat;
+      }
+ .hero-content {
+        z-index: 1;
+        max-width: 800px;
+      }
+
+    .hero h2 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+       .hero-date {
+        font-size: 1.8rem;
+        margin-top: 30px;
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .floating-hearts {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 20px;
+        color: var(--heart-color);
+        opacity: 0.7;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .videos-section {
+        background-color: rgba(248, 187, 208, 0.1);
+      }
+
+      .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .video-card {
+        background-color: var(--card-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+
+      .video-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px var(--shadow-color);
+      }
+
+      .video-thumbnail {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+        background-color: #000;
+      }
+
+      .video-thumbnail video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .video-card:hover .video-thumbnail video {
+        transform: scale(1.1);
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background-color: rgba(233, 30, 99, 0.8);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .play-button:hover {
+        background-color: rgba(233, 30, 99, 1);
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .video-content {
+        padding: 20px;
+      }
+
+      .video-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+
+      .video-date {
+        color: var(--text-color);
+        opacity: 0.7;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      .video-description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: var(--card-bg);
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 900px;
+        width: 90%;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: var(--text-color);
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .video-player {
+        position: relative;
+        max-width: 23vw;
+        max-height: 80vh;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .video-player iframe,
+      .video-player video {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        border: none;
+        border-radius: 12px;
+      }
+
+      footer {
+        background-color: var(--card-bg);
+        padding: 40px 0;
+        text-align: center;
+        box-shadow: 0 -5px 15px var(--shadow-color);
+      }
+
+      .footer-quote {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+        font-family: "Dancing Script", cursive;
+      }
+
+      .copyright {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      @media (max-width: 992px) {
+        .hero h2 {
+          font-size: 3rem;
+        }
+
+        .videos-grid {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        nav ul {
+          margin-top: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        nav ul li {
+          margin: 0 10px 10px;
+        }
+
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .hamburger {
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+        }
+
+        .nav-menu {
+          display: none;
+          width: 100%;
+        }
+
+        .nav-menu.active {
+          display: block;
+        }
+
+        .videos-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero h2 {
+          font-size: 2rem;
+        }
+
+        .hero-date {
+          font-size: 1.5rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="container header-container">
+        <div class="logo">
+          <h1>Gabriel & Thais</h1>
+        </div>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav>
+         <ul class="nav-menu" id="nav-menu">
+                      <li><a href="inicio.html">Início</a></li>
+
+            <li><a href="dias.html">365 Dias</a></li>
+            <li><a href="cartas.html">Cartas Especiais</a></li>
+            <li><a href="album.html">Álbum de Fotos</a></li>
+
+            <li><a href="fuja.html">Surpresa</a></li>
+
+            <li>
+              <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h2 class="cursive">Nossos Momentos em Vídeo</h2>
+        <p
+          style="
+            color: white;
+            text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red,
+              1px 1px 0 red;
+          "
+        >
+          Reviva cada sorriso, cada abraço e cada momento especial que vivemos
+          juntos
+        </p>
+        <a href="#videos" class="btn">Ver Vídeos</a>
+        <div class="hero-date cursive">22 de Setembro, 2024</div>
+      </div>
+      <div class="floating-hearts" id="floating-hearts"></div>
+    </section>
+
+    <section class="videos-section" id="videos">
+      <div class="container">
+        <h2 class="section-title">Nossos Vídeos </h2>
+        <div class="videos-grid">
+          <!-- Vídeo 1 -->
+          <div class="video-card" data-video-src="../video/videos/video1.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video1.jpg">
+                <source src="../video/videos/video1.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 2 -->
+          <div class="video-card" data-video-src="../video/videos/video2.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video2.jpg">
+                <source src="../video/videos/video2.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 3 -->
+          <div class="video-card" data-video-src="../video/videos/video3.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video3.jpg">
+                <source src="../video/videos/video3.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+           
+          </div>
+          <!-- Vídeo 4 -->
+          <div class="video-card" data-video-src="../video/videos/video4.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video4.jpg">
+                <source src="../video/videos/video4.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 5 -->
+          <div class="video-card" data-video-src="../video/videos/video5.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video5.jpg">
+                <source src="../video/videos/video5.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 6 -->
+          <div class="video-card" data-video-src="../video/videos/video6.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video6.jpg">
+                <source src="../video/videos/video6.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+           
+          </div>
+          <!-- Vídeo 7 -->
+          <div class="video-card" data-video-src="../video/videos/video7.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video7.jpg">
+                <source src="../video/videos/video7.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 8 -->
+          <div class="video-card" data-video-src="../video/videos/video8.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video8.jpg">
+                <source src="../video/videos/video8.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 9 -->
+          <div class="video-card" data-video-src="../video/videos/video9.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video9.jpg">
+                <source src="../video/videos/video9.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+           
+          </div>
+          <!-- Vídeo 10 -->
+          <div class="video-card" data-video-src="../video/videos/video10.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video10.jpg">
+                <source src="../video/videos/video10.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+           
+          </div>
+          <!-- Vídeo 11 -->
+          <div class="video-card" data-video-src="../video/videos/video11.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video11.jpg">
+                <source src="../video/videos/video11.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 12 -->
+          <div class="video-card" data-video-src="../video/videos/video12.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video12.jpg">
+                <source src="../video/videos/video12.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 13 -->
+          <div class="video-card" data-video-src="../video/videos/video13.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video13.jpg">
+                <source src="../video/videos/video13.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 14 -->
+          <div class="video-card" data-video-src="../video/videos/video14.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video14.jpg">
+                <source src="../video/videos/video14.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 15 -->
+          <div class="video-card" data-video-src="../video/videos/video15.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video15.jpg">
+                <source src="../video/videos/video15.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 16 -->
+          <div class="video-card" data-video-src="../video/videos/video16.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video16.jpg">
+                <source src="../video/videos/video16.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+           
+          </div>
+          <!-- Vídeo 17 -->
+          <div class="video-card" data-video-src="../video/videos/video17.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video17.jpg">
+                <source src="../video/videos/video17.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+           
+          </div>
+          <!-- Vídeo 18 -->
+          <div class="video-card" data-video-src="../video/videos/video18.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video18.jpg">
+                <source src="../video/videos/video18.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 19 -->
+          <div class="video-card" data-video-src="../video/videos/video19.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video19.jpg">
+                <source src="../video/videos/video19.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 20 -->
+          <div class="video-card" data-video-src="../video/videos/video20.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video20.jpg">
+                <source src="../video/videos/video20.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 21 -->
+          <div class="video-card" data-video-src="../video/videos/video21.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video21.jpg">
+                <source src="../video/videos/video21.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 22 -->
+          <div class="video-card" data-video-src="../video/videos/video22.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video22.jpg">
+                <source src="../video/videos/video22.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 23 -->
+          <div class="video-card" data-video-src="../video/videos/video23.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video23.jpg">
+                <source src="../video/videos/video23.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+           
+          </div>
+          <!-- Vídeo 24 -->
+          <div class="video-card" data-video-src="../video/videos/video24.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video24.jpg">
+                <source src="../video/videos/video24.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 25 -->
+          <div class="video-card" data-video-src="../video/videos/video25.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video25.jpg">
+                <source src="../video/videos/video25.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 26 -->
+          <div class="video-card" data-video-src="../video/videos/video26.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video26.jpg">
+                <source src="../video/videos/video26.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 27 -->
+          <div class="video-card" data-video-src="../video/videos/video27.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video27.jpg">
+                <source src="../video/videos/video27.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 28 -->
+          <div class="video-card" data-video-src="../video/videos/video28.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video28.jpg">
+                <source src="../video/videos/video28.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 29 -->
+          <div class="video-card" data-video-src="../video/videos/video29.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video29.jpg">
+                <source src="../video/videos/video29.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 30 -->
+          <div class="video-card" data-video-src="../video/videos/video30.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video30.jpg">
+                <source src="../video/videos/video30.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 31 -->
+          <div class="video-card" data-video-src="../video/videos/video31.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video31.jpg">
+                <source src="../video/videos/video31.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 32 -->
+          <div class="video-card" data-video-src="../video/videos/video32.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video32.jpg">
+                <source src="../video/videos/video32.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 33 -->
+          <div class="video-card" data-video-src="../video/videos/video33.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video33.jpg">
+                <source src="../video/videos/video33.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 34 -->
+          <div class="video-card" data-video-src="../video/videos/video34.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video34.jpg">
+                <source src="../video/videos/video34.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 35 -->
+          <div class="video-card" data-video-src="../video/videos/video35.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video35.jpg">
+                <source src="../video/videos/video35.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+           
+          </div>
+          <!-- Vídeo 36 -->
+          <div class="video-card" data-video-src="../video/videos/video36.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video36.jpg">
+                <source src="../video/videos/video36.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 37 -->
+          <div class="video-card" data-video-src="../video/videos/video37.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video37.jpg">
+                <source src="../video/videos/video37.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Vídeo 38 -->
+          <div class="video-card" data-video-src="../video/videos/video38.mp4">
+            <div class="video-thumbnail">
+              <video poster="../video/videos/thumbnails/video38.jpg">
+                <source src="../video/videos/video38.mp4" type="video/mp4">
+              </video>
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-quote">
+          "O amor não se vê com os olhos, mas com o coração." - William
+          Shakespeare
+        </div>
+        <div class="copyright">
+          © 2024 Gabriel & Thais - 1 Ano de Amor. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal para reprodução de vídeos -->
+    <div class="modal" id="video-modal">
+      <div class="modal-content">
+        <button class="close-modal" id="close-modal">&times;</button>
+        <div class="video-player" id="video-player">
+          <!-- O iframe será inserido aqui via JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("nav-menu");
+        const header = document.getElementById("header");
+        const floatingHearts = document.getElementById("floating-hearts");
+        const videoModal = document.getElementById("video-modal");
+        const closeModal = document.getElementById("close-modal");
+        const videoPlayer = document.getElementById("video-player");
+        const videoCards = document.querySelectorAll(".video-card");
+
+        // Configuração do tema
+        themeToggle.addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+          if (document.body.classList.contains("dark-mode")) {
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          } else {
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          }
+        });
+
+        // Menu hamburger para mobile
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("active");
+        });
+
+        // Efeito de scroll no header
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 100) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+
+        // Criar corações flutuantes
+        function createHearts() {
+          for (let i = 0; i < 20; i++) {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+            heart.style.animationDelay = Math.random() * 5 + "s";
+            heart.style.fontSize = Math.random() * 15 + 10 + "px";
+            floatingHearts.appendChild(heart);
+          }
+        }
+
+        createHearts();
+
+        // Abrir modal de vídeo
+        videoCards.forEach((card) => {
+          card.addEventListener("click", function () {
+            const videoSrc = this.getAttribute("data-video-src");
+            const videoId = this.getAttribute("data-video-id");
+            const videoTitle = this.querySelector(".video-title").textContent;
+
+            if (videoSrc) {
+              videoPlayer.innerHTML = `
+        <video controls autoplay style="width:100%; border-radius:10px;">
+          <source src="${videoSrc}" type="video/mp4">
+          Seu navegador não suporta vídeos em MP4.
+        </video>
+      `;
+            } else if (videoId) {
+              videoPlayer.innerHTML = `
+        <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+                title="${videoTitle}" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+      `;
+            }
+
+            videoModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+          });
+        });
+
+        // Fechar modal
+        closeModal.addEventListener("click", function () {
+          videoModal.style.display = "none";
+          videoPlayer.innerHTML = "";
+          document.body.style.overflow = "auto";
+        });
+
+        // Fechar modal ao clicar fora
+        window.addEventListener("click", function (e) {
+          if (e.target === videoModal) {
+            videoModal.style.display = "none";
+            videoPlayer.innerHTML = "";
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        // Navegação suave para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+
+              if (navMenu.classList.contains("active")) {
+                navMenu.classList.remove("active");
+              }
+            }
+          });
+        });
+
+        // Animação de entrada dos cards
+        const animateOnScroll = function () {
+          const elements = document.querySelectorAll(".video-card");
+          elements.forEach((element) => {
+            const position = element.getBoundingClientRect();
+            if (position.top < window.innerHeight - 100) {
+              element.style.opacity = 1;
+              element.style.transform = "translateY(0)";
+            }
+          });
+        };
+
+        // Inicializar animações
+        document.querySelectorAll(".video-card").forEach((element) => {
+          element.style.opacity = 0;
+          element.style.transform = "translateY(50px)";
+          element.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        });
+
+        window.addEventListener("scroll", animateOnScroll);
+        animateOnScroll();
+      });
+    </script>
+  </body>
+</html>

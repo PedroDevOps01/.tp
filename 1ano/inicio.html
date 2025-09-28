@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gabriel & Thais - 1 Ano de Amor</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #e91e63;
+        --secondary-color: #f8bbd0;
+        --background-color: #fff;
+        --text-color: #333;
+        --accent-color: #f06292;
+        --card-bg: #fff;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --heart-color: #e91e63;
+      }
+
+      .dark-mode {
+        --primary-color: #f48fb1;
+        --secondary-color: #4a4a4a;
+        --background-color: #1a1a1a;
+        --text-color: #f5f5f5;
+        --accent-color: #f06292;
+        --card-bg: #2c2c2c;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --heart-color: #f48fb1;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        transition: background-color 0.5s ease, color 0.5s ease;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+      }
+
+      .cursive {
+        font-family: "Dancing Script", cursive;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 15px var(--shadow-color);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px var(--shadow-color);
+        background-color: var(--accent-color);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+        font-size: 2.5rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--primary-color);
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        z-index: 1000;
+        background-color: var(--background-color);
+        box-shadow: 0 2px 10px var(--shadow-color);
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        padding: 15px 0;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+        margin-right: 25px;
+        color: var(--primary-color);
+      }
+
+      .logo-icon {
+        color: var(--primary-color);
+        font-size: 24px;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      .theme-toggle {
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        color: var(--primary-color);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 22px;
+        cursor: pointer;
+        z-index: 1100;
+        background: none;
+        border: none;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: var(--primary-color);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        background-image: url("../img/fundo3.jpeg");
+        background-size: cover;
+        background-position: center top 10px;
+        background-repeat: no-repeat;
+      }
+
+      .hero-content {
+        z-index: 1;
+        max-width: 800px;
+      }
+
+      .hero h2 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+      }
+
+      .hero-date {
+        font-size: 1.8rem;
+        margin-top: 30px;
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .floating-hearts {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 20px;
+        color: var(--heart-color);
+        opacity: 0.7;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .about-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .about-text {
+        flex: 1;
+        min-width: 300px;
+        padding-right: 30px;
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      .timeline {
+        flex: 1;
+        min-width: 300px;
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 3px;
+        background-color: var(--primary-color);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 40px;
+        padding-left: 30px;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -38px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        border: 3px solid var(--background-color);
+      }
+
+      .timeline-date {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+      }
+
+      .timeline-content {
+        background-color: var(--card-bg);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+      }
+
+      .gallery {
+        background-color: rgba(248, 187, 208, 0.1);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px var(--shadow-color);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .gallery-item:hover .gallery-caption {
+        opacity: 1;
+      }
+
+      .gallery-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .memories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .memory-card {
+        background-color: var(--card-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .memory-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px var(--shadow-color);
+      }
+
+      .memory-img {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .memory-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .memory-card:hover .memory-img img {
+        transform: scale(1.1);
+      }
+
+      .memory-content {
+        padding: 20px;
+      }
+
+      .memory-date {
+        color: var(--primary-color);
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .memory-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+      }
+
+      .messages {
+        background-color: rgba(248, 187, 208, 0.1);
+      }
+
+      .messages-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .message-form {
+        background-color: var(--card-bg);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px var(--shadow-color);
+        margin-bottom: 40px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: var(--card-bg);
+        color: var(--text-color);
+        font-family: inherit;
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .messages-display {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .message-card {
+        background-color: var(--card-bg);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        position: relative;
+      }
+
+      .message-card::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 3rem;
+        color: var(--primary-color);
+        opacity: 0.2;
+        font-family: "Dancing Script", cursive;
+      }
+
+      .message-author {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+
+      .love-quiz {
+        background-color: rgba(248, 187, 208, 0.1);
+        text-align: center;
+      }
+
+      .quiz-container {
+        background-color: var(--card-bg);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px var(--shadow-color);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .quiz-question {
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .quiz-option {
+        padding: 10px;
+        background-color: var(--secondary-color);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .quiz-option:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .quiz-result {
+        font-size: 1.5rem;
+        margin-top: 20px;
+        color: var(--primary-color);
+        display: none;
+      }
+
+      .memory-game {
+        text-align: center;
+      }
+
+      .game-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .game-card {
+        height: 100px;
+        background-color: var(--primary-color);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0;
+        transition: all 0.3s ease;
+      }
+
+      .game-card.flipped {
+        font-size: 2rem;
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+      }
+
+      .game-card.matched {
+        background-color: var(--accent-color);
+        color: white;
+        cursor: default;
+      }
+
+      footer {
+        background-color: var(--card-bg);
+        padding: 40px 0;
+        text-align: center;
+        box-shadow: 0 -5px 15px var(--shadow-color);
+      }
+
+      .footer-quote {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+        font-family: "Dancing Script", cursive;
+      }
+
+      .social-icons {
+        margin-bottom: 20px;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        margin: 0 10px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        transform: translateY(-5px);
+        background-color: var(--accent-color);
+      }
+
+      .copyright {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      .music-player {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+      }
+
+      .music-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .music-btn:hover {
+        transform: scale(1.1);
+        background-color: var(--accent-color);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: var(--card-bg);
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        position: relative;
+        text-align: center;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: var(--text-color);
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      @media (max-width: 992px) {
+        .hero h2 {
+          font-size: 3rem;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-text,
+        .timeline {
+          padding: 0;
+          width: 100%;
+        }
+
+        .timeline {
+          margin-top: 50px;
+        }
+
+        .game-container {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        nav ul {
+          margin-top: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        nav ul li {
+          margin: 0 10px 10px;
+        }
+
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .hamburger {
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 1.5rem;
+        }
+
+        .nav-menu {
+          display: none;
+          width: 100%;
+        }
+
+        .nav-menu.active {
+          display: block;
+        }
+
+        .gallery-item img {
+          height: 200px;
+        }
+
+        .game-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero h2 {
+          font-size: 2rem;
+        }
+
+        .hero-date {
+          font-size: 1.5rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="container header-container">
+        <div class="logo">
+          <span class="logo-icon"></span>
+          <h1>Gabriel & Thais</h1>
+        </div>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav>
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="dias.html">365 Dias</a></li>
+            <li><a href="cartas.html">Cartas Especiais</a></li>
+            <li><a href="album.html">Álbum de Fotos</a></li>
+                        <li><a href="videos.html">Nossos vídeos</a></li>
+
+            <li><a href="fuja.html">Surpresa</a></li>
+
+            <li>
+              <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h2 class="cursive">Um Ano de Amor</h2>
+        <p
+          style="
+            color: white;
+            text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red,
+              1px 1px 0 red;
+          "
+        >
+          Celebrando 365 dias de risadas, aventuras e momentos inesquecíveis
+          juntos
+        </p>
+        <a href="#messages" class="btn">Deixar uma Mensagem</a>
+        <div class="hero-date cursive">22 de Setembro, 2024</div>
+      </div>
+      <div class="floating-hearts" id="floating-hearts"></div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-title">Nossa História</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Meu amor, há exatamente um ano, nossas vidas se entrelaçaram de
+              uma maneira que jamais poderíamos imaginar. Lembro como se fosse
+              hoje daquele primeiro encontro, daquela conexão instantânea que
+              senti desde o primeiro momento em que te vi. Desde aquele
+              instante, algo dentro de mim dizia que havia algo especial
+              reservado para nós.
+            </p>
+            <p>
+              Cada dia ao seu lado é uma bênção, uma nova oportunidade de
+              crescer juntos, de nos apoiarmos mutuamente e de construir
+              memórias que guardaremos para sempre em nossos corações. Você é a
+              pessoa que me completa, que me inspira, que me faz querer ser
+              melhor a cada dia.
+            </p>
+            <p>
+              Nosso amor não é apenas sentimento: é escolha, é entrega, é
+              cuidado. E, acima de tudo, é um presente de Deus. Porque quando
+              penso em nós, não vejo apenas duas pessoas que se amam, mas sim
+              três presenças que caminham lado a lado: eu, você e Deus, sempre.
+              Ele é a base do nosso relacionamento, Aquele que fortalece nossos
+              passos, que ilumina nossos caminhos e que nos ensina a amar de
+              forma pura e verdadeira.
+            </p>
+            <p>
+              Sonho com o dia em que estaremos diante de Deus e das pessoas que
+              amamos para selar nossa união no casamento, consagrando este amor
+              que Ele mesmo plantou em nossos corações. Quero construir contigo
+              um lar cheio de paz, respeito, carinho e fé — um lar onde o riso
+              seja constante, onde as lágrimas sejam enxugadas com amor e onde
+              cada detalhe seja reflexo da presença de Deus.
+            </p>
+            <p>
+              Também sonho com a família que formaremos. Imagino nossos filhos
+              crescendo cercados de amor, aprendendo conosco o valor da fé, da
+              esperança e da bondade. Vejo em você a parceira perfeita para esta
+              jornada, a mãe incrível que sei que será, e sinto uma alegria
+              imensa em pensar em tudo que ainda construiremos lado a lado.
+            </p>
+            <p>
+              Eu te amo com todo o meu coração. Obrigado por ser você sempre,
+              por cada riso, por cada olhar, por cada abraço, por cada beijo,
+              por cada “eu te amo”. Obrigado por todos os momentos simples e
+              também pelos extraordinários, porque em cada um deles encontro
+              mais motivos para te amar.
+            </p>
+            <p>
+              Todos os instantes que vivemos até agora foram únicos, e sei que
+              temos ainda um mundo inteiro de sonhos para realizar, de histórias
+              para escrever e de bênçãos para receber. Este é apenas o começo de
+              algo incrível que construiremos juntos.
+            </p>
+            <p>
+              Esta página é uma celebração do nosso primeiro ano juntos e um
+              tributo a tudo que conquistamos como casal. Que venham muitos
+              outros anos repletos de amor, aventuras, felicidade e fé. Que Deus
+              continue sendo o centro do nosso relacionamento, guiando cada
+              passo e nos mostrando que o verdadeiro amor é aquele que vem
+              d’Ele.
+            </p>
+            <p class="cursive" style="font-size: 1.5rem; margin-top: 20px">
+              Eu, você e Deus, sempre. Hoje, amanhã, no nosso casamento, na
+              nossa família e por toda a eternidade. ❤️
+            </p>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">13/07/2024</div>
+              <div class="timeline-content">
+                <h3>Nossa primeira quadrilha</h3>
+                <p>
+                  Um dia de dança, risadas e alegria, onde também conheci seus
+                  colegas de trabalho. Deus sorria conosco naquele momento.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">21/07/2024</div>
+              <div class="timeline-content">
+                <h3>Nosso primeiro Halleluya</h3>
+                <p>
+                  Um momento de fé e emoção, onde sentimos Deus no meio de nós e
+                  nosso amor começou a se revelar.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">28/07/2024</div>
+              <div class="timeline-content">
+                <h3>Dia de Praia</h3>
+                <p>
+                  Um dia único, inesquecível, onde cada instante ao seu lado me
+                  fez sentir a bênção de estarmos juntos.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">30/07/2024</div>
+              <div class="timeline-content">
+                <h3>Nosso primeiro beijo</h3>
+                <p>
+                  Uma data especial, marcada pelo início de uma história de amor
+                  abençoada por Deus.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">31/08/2024</div>
+              <div class="timeline-content">
+                <h3>Dia de Dengo</h3>
+                <p>
+                  Um dia cheio de carinho, abraços e sorrisos, celebrando o
+                  simples prazer de estarmos juntos na loja da mãe.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">22/10/2024</div>
+              <div class="timeline-content">
+                <h3>Nosso primeiro mês</h3>
+                <p>
+                  Celebrando nosso primeiro mês juntos, com amor, sorrisos e a
+                  bênção de Deus iluminando nosso caminho.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">01/12/2024</div>
+              <div class="timeline-content">
+                <h3>Nossa Crisma</h3>
+                <p>
+                  Um momento abençoado, onde celebramos nossa fé juntos, entre
+                  risadas e muita alegria.
+                </p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">22/09/2025</div>
+              <div class="timeline-content">
+                <h3>Um Ano de Amor</h3>
+                <p>
+                  Comemorando nosso primeiro aniversário de namoro, repleto de
+                  amor, bênçãos de Deus e momentos inesquecíveis.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <h2 class="section-title">Nossas Fotos</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="../img/p1.jpeg" alt="Foto 1" />
+          </div>
+          <div class="gallery-item">
+            <img src="../img/p2.jpeg" alt="Foto 2" />
+          </div>
+          <div class="gallery-item">
+            <img src="../img/p3.jpeg" alt="Foto 3" />
+          </div>
+        </div>
+        <div class="gallery-nav">
+          <a href="album.html" class="btn">Ver Álbum Completo</a>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <section class="love-quiz" id="quiz">
+      <div class="container">
+        <h2 class="section-title">Quiz do Nosso Amor</h2>
+        <div class="quiz-container">
+          <div class="quiz-question" id="quiz-question">
+            Onde foi nosso primeiro beijo?
+          </div>
+          <div class="quiz-options" id="quiz-options">
+            <div class="quiz-option" data-correct="true">
+              No parque perto da sua casa
+            </div>
+            <div class="quiz-option">No cinema</div>
+            <div class="quiz-option">
+              No restaurante do nosso primeiro encontro
+            </div>
+            <div class="quiz-option">No carro</div>
+          </div>
+          <div class="quiz-result" id="quiz-result">
+            <i class="fas fa-heart"></i> Correto! Você lembra mesmo dos nossos
+            momentos especiais!
+          </div>
+          <button class="btn" id="next-question">Próxima Pergunta</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="memory-game" id="game">
+      <div class="container">
+        <h2 class="section-title">Jogo da Memória do Nosso Amor</h2>
+        <p style="text-align: center; margin-bottom: 30px">
+          Encontre os pares dos nossos momentos especiais!
+        </p>
+        <div class="game-container" id="game-container"></div>
+        <div style="text-align: center; margin-top: 30px">
+          <button class="btn" id="restart-game">Reiniciar Jogo</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="messages" id="messages">
+      <div class="container">
+        <h2 class="section-title">Mensagem Especial</h2>
+        <div class="messages-container">
+          <div class="message-form">
+            <h3 style="margin-bottom: 20px">
+              Deixe uma mensagem para o nosso amor
+            </h3>
+            <form id="message-form">
+              <div class="form-group">
+                <label for="name">Seu Nome</label>
+                <input type="text" id="name" value="Príncipe" readonly />
+              </div>
+              <div class="form-group">
+                <label for="message">Sua Mensagem</label>
+                <textarea id="message" required>
+Thais, eu te amo muito! Você é a melhor coisa que me aconteceu. São 365 dias de pura felicidade ao seu lado, e que venham muitos outros! Você ilumina meus dias com seu sorriso e me faz uma pessoa melhor. Obrigado por ser exatamente quem você é. Com todo meu amor, Príncipe.</textarea
+                >
+              </div>
+              <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+          </div>
+          <h3 style="text-align: center; margin-bottom: 30px">
+            Nossas Mensagens
+          </h3>
+          <div class="messages-display" id="messages-display">
+            <div class="message-card">
+              <div class="message-author">Príncipe</div>
+              <p>
+                Thais, cada dia ao seu lado é um presente. Você é a
+                personificação de tudo que sempre busquei em uma pessoa. Te amo!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-quote">
+          "Um ano de amor e muitas histórias ainda por vir"
+        </div>
+
+        <div class="copyright">
+          © 2024 Gabriel & Thais - 1 Ano de Amor. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <div class="music-player">
+      <iframe
+        width="0"
+        height="0"
+        src="https://www.youtube.com/embed/8gexeSe0occ?autoplay=1&loop=1&playlist=8gexeSe0occ"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="modal" id="message-modal">
+      <div class="modal-content">
+        <button class="close-modal" id="close-modal">&times;</button>
+        <h2>Mensagem Enviada!</h2>
+        <p>
+          Sua mensagem de amor foi registrada para sempre em nossa história!
+        </p>
+        <div class="cursive" style="font-size: 1.5rem; margin-top: 20px">
+          Te amo muito!
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("nav-menu");
+        const header = document.getElementById("header");
+        const floatingHearts = document.getElementById("floating-hearts");
+        const messageForm = document.getElementById("message-form");
+        const messagesDisplay = document.getElementById("messages-display");
+        const messageModal = document.getElementById("message-modal");
+        const closeModal = document.getElementById("close-modal");
+        const quizOptions = document.getElementById("quiz-options");
+        const quizResult = document.getElementById("quiz-result");
+        const nextQuestionBtn = document.getElementById("next-question");
+        const gameContainer = document.getElementById("game-container");
+        const restartGameBtn = document.getElementById("restart-game");
+
+        let currentQuestion = 0;
+        let gameCards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+
+       const quizQuestions = [
+  {
+    question: "Onde foi nosso primeiro beijo?",
+    options: [
+      "Na Igreja",
+      "No bloco da sua casa",
+      "No restaurante do nosso primeiro encontro",
+      "No bloco da minha casa",
+    ],
+    correct: 1, // array mesmo que tenha só 1 resposta
+  },
+  {
+    question: "Qual é minha comida favorita que você faz?",
+    options: [
+      "Pão com queijo (merenda da tarde)",
+      "Brigadeiro de panela",
+      "Arroz com mortadela",
+      "Brownie",
+      "Todos os anteriores",
+    ],
+    correct: 4,
+  },
+  {
+    question: "Qual lembra qual foi o nosso primeiro filme assistido juntos?",
+    options: [
+      "Sim",
+      "Não sei",
+      "Não lembro",
+      "Sla",
+    ],
+    correct: 3, // agora aceita múltiplas respostas
+  },
+  {
+    question: "O que mais me faz feliz?",
+    options: [
+      "Seu sorriso",
+      "Seu abraço",
+      "Seu carinho",
+      "Todas as alternativas",
+    ],
+    correct: 3,
+  },
+];
+
+
+        const memoryCards = [
+          { emoji: "❤️", name: "coração" },
+          { emoji: "🌹", name: "rosa" },
+          { emoji: "🎂", name: "bolo" },
+          { emoji: "🎁", name: "presente" },
+          { emoji: "⭐", name: "estrela" },
+          { emoji: "🌠", name: "estrela cadente" },
+          { emoji: "💑", name: "casal" },
+          { emoji: "📅", name: "calendário" },
+        ];
+
+        themeToggle.addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+          if (document.body.classList.contains("dark-mode")) {
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          } else {
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          }
+        });
+
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("active");
+        });
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 100) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+
+        function createHearts() {
+          for (let i = 0; i < 20; i++) {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+            heart.style.animationDelay = Math.random() * 5 + "s";
+            heart.style.fontSize = Math.random() * 15 + 10 + "px";
+            floatingHearts.appendChild(heart);
+          }
+        }
+
+        createHearts();
+
+        messageForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("name").value;
+          const message = document.getElementById("message").value;
+          if (name && message) {
+            const messageCard = document.createElement("div");
+            messageCard.classList.add("message-card");
+            messageCard.innerHTML = `
+              <div class="message-author">${name}</div>
+              <p>${message}</p>
+            `;
+            messagesDisplay.appendChild(messageCard);
+            messageModal.style.display = "flex";
+          }
+        });
+
+        closeModal.addEventListener("click", function () {
+          messageModal.style.display = "none";
+        });
+
+        window.addEventListener("click", function (e) {
+          if (e.target === messageModal) {
+            messageModal.style.display = "none";
+          }
+        });
+
+        function loadQuestion() {
+          if (currentQuestion >= quizQuestions.length) {
+            document.getElementById("quiz-question").textContent =
+              "Você completou o quiz! Nosso amor é perfeito!";
+            quizOptions.innerHTML = "";
+            nextQuestionBtn.style.display = "none";
+            quizResult.innerHTML =
+              '<i class="fas fa-heart"></i> Você conhece nosso amor perfeitamente!';
+            quizResult.style.display = "block";
+            return;
+          }
+          const question = quizQuestions[currentQuestion];
+          document.getElementById("quiz-question").textContent =
+            question.question;
+          quizOptions.innerHTML = "";
+          question.options.forEach((option, index) => {
+            const optionElement = document.createElement("div");
+            optionElement.classList.add("quiz-option");
+            optionElement.textContent = option;
+            optionElement.dataset.index = index;
+            optionElement.addEventListener("click", checkAnswer);
+            quizOptions.appendChild(optionElement);
+          });
+          quizResult.style.display = "none";
+        }
+
+        function checkAnswer(e) {
+          const selectedIndex = parseInt(e.target.dataset.index);
+          const correctIndex = quizQuestions[currentQuestion].correct;
+          if (selectedIndex === correctIndex) {
+            quizResult.innerHTML =
+              '<i class="fas fa-heart"></i> Correto! Você lembra mesmo dos nossos momentos especiais!';
+            quizResult.style.display = "block";
+            for (let i = 0; i < 5; i++) {
+              const heart = document.createElement("div");
+              heart.classList.add("heart");
+              heart.innerHTML = '<i class="fas fa-heart"></i>';
+              heart.style.left = Math.random() * 100 + "vw";
+              heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+              heart.style.animationDelay = "0s";
+              heart.style.fontSize = Math.random() * 15 + 10 + "px";
+              document.body.appendChild(heart);
+              setTimeout(() => {
+                heart.remove();
+              }, 6000);
+            }
+          } else {
+            quizResult.innerHTML =
+              '<i class="fas fa-heart-broken"></i> Quase! Mas nosso amor é ainda mais especial do que isso!';
+            quizResult.style.display = "block";
+          }
+          const options = document.querySelectorAll(".quiz-option");
+          options.forEach((option) => {
+            option.removeEventListener("click", checkAnswer);
+            if (parseInt(option.dataset.index) === correctIndex) {
+              option.style.backgroundColor = "var(--accent-color)";
+              option.style.color = "white";
+            }
+          });
+        }
+
+        nextQuestionBtn.addEventListener("click", function () {
+          currentQuestion++;
+          loadQuestion();
+        });
+
+        function initializeGame() {
+          gameContainer.innerHTML = "";
+          flippedCards = [];
+          matchedPairs = 0;
+          gameCards = [...memoryCards, ...memoryCards];
+          gameCards.sort(() => Math.random() - 0.5);
+          gameCards.forEach((card, index) => {
+            const cardElement = document.createElement("div");
+            cardElement.classList.add("game-card");
+            cardElement.dataset.index = index;
+            cardElement.dataset.name = card.name;
+            cardElement.innerHTML = card.emoji;
+            cardElement.addEventListener("click", flipCard);
+            gameContainer.appendChild(cardElement);
+          });
+        }
+
+        function flipCard(e) {
+          const cardIndex = parseInt(e.target.dataset.index);
+          const card = gameContainer.children[cardIndex];
+          if (
+            card.classList.contains("flipped") ||
+            card.classList.contains("matched")
+          ) {
+            return;
+          }
+          card.classList.add("flipped");
+          flippedCards.push(card);
+          if (flippedCards.length === 2) {
+            const [card1, card2] = flippedCards;
+            if (card1.dataset.name === card2.dataset.name) {
+              card1.classList.add("matched");
+              card2.classList.add("matched");
+              matchedPairs++;
+              if (matchedPairs === memoryCards.length) {
+                setTimeout(() => {
+                  alert("Parabéns! Você completou o jogo do nosso amor! ❤️");
+                }, 500);
+              }
+              flippedCards = [];
+            } else {
+              setTimeout(() => {
+                card1.classList.remove("flipped");
+                card2.classList.remove("flipped");
+                flippedCards = [];
+              }, 1000);
+            }
+          }
+        }
+
+        restartGameBtn.addEventListener("click", initializeGame);
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+              if (navMenu.classList.contains("active")) {
+                navMenu.classList.remove("active");
+              }
+            }
+          });
+        });
+
+        const animateOnScroll = function () {
+          const elements = document.querySelectorAll(
+            ".memory-card, .timeline-item, .quiz-container, .game-container, .gallery-item"
+          );
+          elements.forEach((element) => {
+            const position = element.getBoundingClientRect();
+            if (position.top < window.innerHeight - 100) {
+              element.style.opacity = 1;
+              element.style.transform = "translateY(0)";
+            }
+          });
+        };
+
+        document
+          .querySelectorAll(
+            ".memory-card, .timeline-item, .quiz-container, .game-container, .gallery-item"
+          )
+          .forEach((element) => {
+            element.style.opacity = 0;
+            element.style.transform = "translateY(50px)";
+            element.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+          });
+
+        window.addEventListener("scroll", animateOnScroll);
+
+        loadQuestion();
+        initializeGame();
+        animateOnScroll();
+      });
+    </script>
+  </body>
+</html>

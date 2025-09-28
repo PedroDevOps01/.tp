@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>"
+    />
+    <title>Feliz 1 ano meu Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .coracao {
+      position: absolute;
+      font-size: 20px;
+      color: rgba(255, 0, 0, 0.3);
+      animation: flutuar 8s infinite;
+      z-index: -1;
+    }
+
+    @keyframes flutuar {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .painel {
+      margin: auto;
+      background: rgba(255, 255, 255, 0.9);
+      width: 500px;
+      height: 550px;
+      border-radius: 20px;
+      text-align: center;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #d44d5c;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #6b5b95;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      margin: 20px 0;
+    }
+
+    img {
+      border-radius: 10px;
+      margin: 10px 0;
+      max-width: 80%;
+      border: 3px solid #ff9a9e;
+    }
+
+    .botoes {
+      margin-top: 20px;
+      position: relative;
+    }
+
+    #sim, #nao {
+      height: 45px;
+      width: 100px;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #sim {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #sim:hover {
+      transform: scale(1.05);
+      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #nao {
+      background: linear-gradient(to right, #a5a5a5, #c9c9c9);
+      margin-left: 15px;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 90vw;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: aparecer 0.5s ease;
+    }
+
+    @keyframes aparecer {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .video-container {
+      max-width: 100%;
+      max-height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-container video {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 12px;
+    }
+
+    .modal-botoes {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .modal-botoes button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .modal-botoes button:hover {
+      transform: scale(1.05);
+    }
+
+    .close {
+      position: absolute;
+      top: 15px; right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="coracoes-container"></div>
+
+  <div class="painel">
+    <h1>Feliz 1 Ano, Meu Amor!</h1>
+    <img src="https://gifman.net/wp-content/uploads/2019/06/ursinho-fofo-apaixonado.gif" alt="Ursinhos apaixonados">
+    <h2>Aceita casar comigo de novo?</h2>
+    <div class="botoes">
+      <button id="sim"> Sim! </button>
+      <button id="nao" onmouseover="fuja()" ontouchstart="fuja()"> Não! </button>
+    </div>
+  </div>
+
+  <!-- Modal dos vídeos -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="video-container">
+        <video id="videoPlayer" controls autoplay></video>
+      </div>
+      <div class="modal-botoes">
+        <button id="proximo">Próximo ❤️</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // corações
+    function criarCoracoes() {
+      const container = document.getElementById('coracoes-container');
+      for (let i = 0; i < 15; i++) {
+        const coracao = document.createElement('div');
+        coracao.innerHTML = '❤';
+        coracao.classList.add('coracao');
+        coracao.style.left = Math.random() * 100 + 'vw';
+        coracao.style.top = (Math.random() * 100 + 100) + 'vh';
+        coracao.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(coracao);
+      }
+    }
+    criarCoracoes();
+
+    // botão não foge
+    function fuja() {
+      var botaoNao = document.getElementById("nao");
+      botaoNao.style.position = "fixed";
+      var larguraJanela = window.innerWidth;
+      var alturaJanela = window.innerHeight;
+      var maxX = larguraJanela - botaoNao.offsetWidth;
+      var maxY = alturaJanela - botaoNao.offsetHeight;
+      botaoNao.style.left = Math.floor(Math.random() * maxX) + "px";
+      botaoNao.style.top = Math.floor(Math.random() * maxY) + "px";
+    }
+
+    // modal
+    const videos = [
+      "../video/video.mp4", // coloque aqui o caminho do seu primeiro vídeo
+     "../video/video1.mp4",  // coloque aqui o caminho do seu segundo vídeo
+     "../video/video2.mp4"
+    ];
+
+    let videoAtual = 0;
+
+    const simBtn = document.getElementById('sim');
+    const modal = document.getElementById('modal');
+    const closeBtn = document.querySelector('.close');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const proximoBtn = document.getElementById('proximo');
+
+    function abrirModal(index) {
+      videoAtual = index;
+      videoPlayer.src = videos[videoAtual];
+      modal.style.display = 'flex';
+      videoPlayer.play();
+    }
+
+    simBtn.addEventListener('click', () => abrirModal(0));
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+      videoPlayer.pause();
+    });
+
+    proximoBtn.addEventListener('click', () => {
+      videoAtual = (videoAtual + 1) % videos.length;
+      videoPlayer.src = videos[videoAtual];
+      videoPlayer.play();
+    });
+
+    // quando o vídeo termina, já mostra o próximo automaticamente
+    videoPlayer.addEventListener('ended', () => {
+      if (videoAtual < videos.length - 1) {
+        videoAtual++;
+        videoPlayer.src = videos[videoAtual];
+        videoPlayer.play();
+      }
+    });
+  </script>
+</body>
+</html>
